@@ -6,6 +6,7 @@ public {
 }
 
 import derelict.freeimage.freeimage;
+import sbylib.wrapper.freeimage.FreeImage;
 
 class ImageLoader {
     static Image load(string path) {
@@ -63,17 +64,13 @@ class ImageLoader {
         assert(exists(path), format!"'%s' does not exist."(path));
     }
     do {
-        import std.string : toStringz;
-
-        // 第2引数は現在使われていないらしい。
-        return cast(ImageFormat)FreeImage_GetFileType(path.toStringz,0);
+        return FreeImage().getFileType(path);
     }
 
     private static FIBITMAP* load(ImageFormat format, string path, int option = 0)
         out(result; result, path ~ " exists, but cannot load.")
     {
-        import std.string : toStringz;
-        return FreeImage_Load(format, path.toStringz, option);
+        return FreeImage().load(format, path, option);
     }
 
 }

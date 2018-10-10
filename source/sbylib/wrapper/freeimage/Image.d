@@ -5,16 +5,17 @@ class Image {
 
     import derelict.freeimage.freeimage;
     import sbylib.wrapper.freeimage.Constants;
+    import sbylib.wrapper.freeimage.FreeImage;
 
     private FIBITMAP* bitmap;
 
     this(int width, int height, int channels, ImageType type) {
         auto bpp = channels * getTypeBits(type);
-        this(FreeImage_AllocateT(type, width, height, bpp));
+        this(FreeImage().allocate(width, height, bpp, type));
     }
 
     this(int width, int height, int bpp) {
-        this(FreeImage_Allocate(width, height, bpp));
+        this(FreeImage().allocate(width, height, bpp));
     }
 
     package this(FIBITMAP* bitmap)
@@ -24,23 +25,23 @@ class Image {
     }
 
     ~this() {
-        FreeImage_Unload(bitmap);
+        FreeImage().unload(this.bitmap);
     }
 
     auto to32bit() {
-        return new Image(FreeImage_ConvertTo32Bits(bitmap));
+        return new Image(FreeImage().convertTo32Bits(bitmap));
     }
 
     int getWidth() {
-        return FreeImage_GetWidth(bitmap);
+        return FreeImage().getWidth(bitmap);
     }
 
     int getHeight() {
-        return FreeImage_GetHeight(bitmap);
+        return FreeImage().getHeight(bitmap);
     }
 
     uint getBPP() {
-        return FreeImage_GetBPP(bitmap);
+        return FreeImage().getBPP(bitmap);
     }
 
     uint getChannels() {
@@ -48,7 +49,7 @@ class Image {
     }
 
     void* getBits() {
-        return FreeImage_GetBits(bitmap);
+        return FreeImage().getBits(bitmap);
     }
 
     T[] getData(T=ubyte)() {
