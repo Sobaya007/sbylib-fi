@@ -23,6 +23,11 @@ class FreeImage {
         DerelictFI.load();
     }
 
+    string getVersion() {
+        import std.conv;
+        return FreeImage_GetVersion().to!string;
+    }
+
     FIBITMAP* allocate(int width, int height, int bpp) {
         return FreeImage_Allocate(width, height, bpp);
     }
