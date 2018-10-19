@@ -32,8 +32,8 @@ class FreeImage {
         return FreeImage_Allocate(width, height, bpp);
     }
 
-    FIBITMAP* allocate(int width, int height, int bpp, ImageType type) {
-        return FreeImage_AllocateT(type, width, height, bpp);
+    FIBITMAP* allocate(int width, int height, ImageType type) {
+        return FreeImage_AllocateT(type, width, height);
     }
 
     FIBITMAP* load(ImageFormat format, string path, int option) {

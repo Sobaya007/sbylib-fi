@@ -9,9 +9,8 @@ class Image {
 
     private FIBITMAP* bitmap;
 
-    this(int width, int height, int channels, ImageType type) {
-        auto bpp = channels * getTypeBits(type);
-        this(FreeImage().allocate(width, height, bpp, type));
+    this(int width, int height, ImageType type) {
+        this(FreeImage().allocate(width, height, type));
     }
 
     this(int width, int height, int bpp) {
