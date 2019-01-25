@@ -1,7 +1,10 @@
-module sbylib.wrapper.freeimage.Constants;
+module sbylib.wrapper.freeimage.constants;
 
 import derelict.freeimage.freeimage;
 
+/**
+Type which is returned by Image.getImageType
+*/
 enum ImageType {
     Unknown = FIT_UNKNOWN,
     Bitmap = FIT_BITMAP,
@@ -18,7 +21,7 @@ enum ImageType {
     Rgbaf = FIT_RGBAF
 }
 
-enum ImageFormat {
+package enum ImageFormat {
     Unknown = FIF_UNKNOWN,
     Bmp = FIF_BMP,
     Cut = FIF_CUT,
@@ -57,42 +60,27 @@ enum ImageFormat {
     Xpm = FIF_XPM
 }
 
-enum GifLoadOption {
-    Default = GIF_DEFAULT,
-    Load256 = GIF_LOAD256,
-    PlayBack = GIF_PLAYBACK,
-}
-
-enum IcoLoadOption {
-    Default = 0,
-    MakeAlpha = ICO_MAKEALPHA,
-}
-
-enum JpegLoadOption {
-    Default = JPEG_DEFAULT,
+/**
+Flag type used in ImageLoader.loadAsJpeg
+*/
+enum JpegLoadQuality {
     Fast = JPEG_FAST,
     Accurate = JPEG_ACCURATE,
 }
 
+/**
+Flag type used in ImageLoader.loadAsPcd
+*/
 enum PcdLoadOption {
-    Default = PCD_DEFAULT,
     Base = PCD_BASE,
     BaseDiv4 = PCD_BASEDIV4,
     BaseDiv16 = PCD_BASEDIV16,
 }
 
-enum PngLoadOption {
-    Default = 0,
-    PngIgnoreGamma = PNG_IGNOREGAMMA,
-}
-
-enum RawLoadOption {
-    Default = RAW_DEFAULT,
-    Preview = RAW_PREVIEW,
-    Display = RAW_DISPLAY,
-}
-
-enum ExrSaveOption {
+/**
+Flag type used in Image.saveAsExr
+*/
+enum ExrCompressOption {
     None = EXR_NONE,
     Zip = EXR_ZIP,
     Piz = EXR_PIZ,
@@ -101,6 +89,9 @@ enum ExrSaveOption {
     LC = EXR_LC,
 }
 
+/**
+Flag type used in Image.saveAsJpeg
+*/
 enum JpegSaveQualityOption {
     Default = JPEG_DEFAULT,
     Superb = JPEG_QUALITYSUPERB,
@@ -110,6 +101,9 @@ enum JpegSaveQualityOption {
     Bad = JPEG_QUALITYBAD,
 }
 
+/**
+Flag type used in Image.saveAsJpeg
+*/
 enum JpegSaveSubsamplingOption {
     Subsampling411 = JPEG_SUBSAMPLING_411,
     Subsampling420 = JPEG_SUBSAMPLING_420,
@@ -117,23 +111,28 @@ enum JpegSaveSubsamplingOption {
     Subsampling444 = JPEG_SUBSAMPLING_444,
 }
 
-enum PngSaveOption {
-    Default = PNG_DEFAULT,
-    ZBestSpeed = PNG_Z_BEST_SPEED,
-    ZDefaultCompression = PNG_Z_DEFAULT_COMPRESSION,
-    ZBestCompression = PNG_Z_BEST_COMPRESSION,
-    ZNoCompression = PNG_Z_NO_COMPRESSION,
+/**
+Flag type used in Image.saveAsPng
+*/
+enum PngCompressOption {
+    BestSpeed = PNG_Z_BEST_SPEED,
+    DefaultCompression = PNG_Z_DEFAULT_COMPRESSION,
+    BestCompression = PNG_Z_BEST_COMPRESSION,
+    NoCompression = PNG_Z_NO_COMPRESSION,
 }
 
+/**
+Flag type used in Image.saveAsPbm, Image.saveAsPgm, Image.saveAsPpm
+*/
 enum PnmSaveOption {
-    Default = PNM_DEFAULT,
-    SaveRaw = PNM_SAVE_RAW,
-    SaveAscii = PNM_SAVE_ASCII
+    Raw = PNM_SAVE_RAW,
+    Ascii = PNM_SAVE_ASCII
 }
 
-enum TiffSaveOption {
-    Default = TIFF_DEFAULT,
-    CMYK = TIFF_CMYK,
+/**
+Flag type used in Image.saveAsTiff
+*/
+enum TiffCompressOption {
     PackBits = TIFF_PACKBITS,
     Deflate = TIFF_DEFLATE,
     AdobeDeflate = TIFF_ADOBE_DEFLATE,
