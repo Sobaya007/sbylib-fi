@@ -1,15 +1,14 @@
-module sbylib.wrapper.freeimage.FreeImage;
+module sbylib.wrapper.freeimage.freeimage;
 
 import derelict.freeimage.freeimage;
 import derelict.util.exception;
+import sbylib.wrapper.freeimage.constants;
 
-import sbylib.wrapper.freeimage.Constants;
-
-private ShouldThrow missingSymFunc(string symName) {
+private ShouldThrow missingSymFunc(string) {
     return ShouldThrow.No;
 }
 
-class FreeImage {
+package class FreeImage {
 
     private static FreeImage instance;
 
@@ -24,7 +23,7 @@ class FreeImage {
     }
 
     string getVersion() {
-        import std.conv;
+        import std.conv : to;
         return FreeImage_GetVersion().to!string;
     }
 
