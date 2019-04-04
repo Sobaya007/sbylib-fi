@@ -128,7 +128,7 @@ class Image {
     Returns: an array pointing to the raw data.
     */
     T[] dataArray(T=ubyte)() {
-        return (cast(T*)getBits)[0..getWidth() * getHeight() * getBPP() / (8*T.sizeof)];
+        return (cast(T*)rawPointer)[0..width * height * bpp / (8*T.sizeof)];
     }
 
     /**
