@@ -122,6 +122,10 @@ class Image {
         return FreeImage().getBits(bitmap);
     }
 
+    RGBQUAD* palette() {
+        return FreeImage().getPalette(bitmap);
+    }
+
     /**
     Returns the raw image data as T[].
 

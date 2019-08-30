@@ -28,7 +28,7 @@ package class FreeImage {
     }
 
     FIBITMAP* allocate(int width, int height, int bpp) {
-        return FreeImage_Allocate(width, height, bpp);
+        return FreeImage_Allocate(width, height, bpp, uint.max, uint.max, uint.max);
     }
 
     FIBITMAP* allocate(int width, int height, ImageType type) {
@@ -42,6 +42,10 @@ package class FreeImage {
 
     void unload(FIBITMAP* bitmap) {
         FreeImage_Unload(bitmap);
+    }
+
+    RGBQUAD* getPalette(FIBITMAP *bitmap) {
+        return FreeImage_GetPalette(bitmap);
     }
 
     FIBITMAP* convertTo32Bits(FIBITMAP* bitmap) {
